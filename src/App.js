@@ -1,9 +1,10 @@
 import './App.css';
+import LiveQuiz from './screens/LiveQuiz';
 
 function App() {
   return (
     <div className="App">
-      Quiz App
+      <LiveQuiz />
     </div>
   );
 }
