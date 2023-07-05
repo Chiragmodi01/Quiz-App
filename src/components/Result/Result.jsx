@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./Result.css";
 import GaugeChart from "react-responsive-gauge-chart";
+import {calculateScore} from '../../utils/calculateScore';
 
 import { NextButton } from "../QuizModal/styled-comps";
 import confettiHeader from "../../assets/confettiHeader.svg";
@@ -8,7 +9,7 @@ import meterBg from "../../assets/meterBg.svg";
 
 function Result({ onNextClick }) {
     const meterBorderColors = ["#ff3e3e", "#ff5f3c", "#ff9638", "#fdb635", "#fdc933", "#c8c949", "#8ec15f", "#44b77b"];
-    const scorePercent = '60';
+    const scorePercent = calculateScore()
 
 	return (
 		<div className="Result-wrapper">
