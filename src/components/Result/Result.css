@@ -15,10 +15,58 @@
     padding-top: 20px;
 }
 .result-indicator-wrapper {
-    margin: 20px 0;
+    width: 100%;
+    /* background-color: lightskyblue; */
+    margin: 30px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .score-meter-bg {
     width: 200px;
+    /* position: absolute; */
+    /* top: 0;*/
+    /* left: 50%;
+    transform: translateX(-50%); */
+    margin: auto;
+}
+.meter-chart {
+    position: absolute;
+    top: -16%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.meter-outer-circle {
+    background-color: #fff;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    box-shadow: 0 5px 20px 0 var(--gray);
+}
+.meter-inner-circle {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 2px solid var(--gray);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.meter-percentage {
+    font-weight: bold;
+    transform: translateY(-12px);
+    font-size: 1.3rem;
 }
 .result-info-tabs {
     display: flex;
