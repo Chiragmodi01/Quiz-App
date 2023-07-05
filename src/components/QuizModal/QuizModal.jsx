@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import {ArrowRight} from '@styled-icons/bootstrap/ArrowRight'
+
 import { NextButton, OptionTab, QuizCounter } from "../styled-comps";
+import './QuizModal.css';
 
 const QuizModal = ({ QuizData }) => {
 	const {
@@ -9,6 +12,12 @@ const QuizModal = ({ QuizData }) => {
 		image = "",
 		options = [],
 	} = QuizData || {};
+
+	const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+
+	const handleOptionTabClick = (idx) => {
+		setSelectedOptionIndex(idx);
+	};
 
 	return (
 		<div className="modal-wrapper">
@@ -21,13 +30,13 @@ const QuizModal = ({ QuizData }) => {
 						<span className="ques-count-border"></span>
 						<div className="ques-count">
 							<span className="curren-ques-count">{quesNumber}</span>
-							<span className="total-ques-count">{totalQuesNumber}</span>
+							<span className="total-ques-count">/{totalQuesNumber}</span>
 						</div>
 					</QuizCounter>
 				</section>
 				<section className="quiz-main-wrapper">
 					<div className="ques-container">
-						<h2 className="question">{question}</h2>
+						<h2 className="question-text">{question}</h2>
 						<div className="ques-image-container">
 							<img src={image} alt="question-img" className="ques-image" />
 						</div>
@@ -35,14 +44,22 @@ const QuizModal = ({ QuizData }) => {
 					<div className="quiz-options-wrapper">
 						{options.map((option, idx) => {
 							return (
-								<OptionTab key={idx} className="quiz-option-wrapper">
-									<input
-										type="checkbox"
-										name="option"
-										id="option"
-										className="quiz-option"
-									/>
-									<p className="option-text">{option}</p>
+								<OptionTab isSelected={selectedOptionIndex === idx} onClick={() => handleOptionTabClick(idx)} key={idx} className="quiz-option-wrapper">
+									<div className="inputbox-container">
+										<input
+											type="checkbox"
+											name="option"
+											id={`option-${idx}`}
+											value={option}
+											className="quiz-option-input"
+											checked={selectedOptionIndex === idx}
+											onChange={() => {}}
+										/>
+									     <label htmlFor={`option-${idx}`}></label>
+									</div>
+									<p className="option-text">
+										{option}
+									</p>
 								</OptionTab>
 							);
 						})}
@@ -51,7 +68,9 @@ const QuizModal = ({ QuizData }) => {
 				<section className="btn-next-wrapper">
 					<NextButton>
 						<p className="btn-next">Next</p>
-						<span className="icon-next">-</span>
+						<span className="icon-arrow">
+							<ArrowRight size='20' />
+						</span>
 					</NextButton>
 				</section>
 			</main>

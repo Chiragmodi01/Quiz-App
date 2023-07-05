@@ -6,6 +6,6 @@
 		"question": "How are you doing?",
 		"image": "https://i.pravatar.cc/150/200",
 		"answer": "option2",
-		"options": ["option1", "option2", "option3", "option4"]
+		"options": ["option1", "option2", "option3", "option4", "option5"]
 	}
 ]
