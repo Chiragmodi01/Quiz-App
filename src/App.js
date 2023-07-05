@@ -4,6 +4,7 @@ import './App.css';
 import QuizModal from './components/QuizModal/QuizModal'
 import QuizData from './data/sample.json'
 import Home from './components/Home/Home';
+import Result from './components/Result/Result';
 
 const App = () => {
   const [quesIndex, setQuesIndex] = useState(0);
@@ -31,7 +32,7 @@ const App = () => {
       return  <QuizModal QuizData={QuizData[quesIndex]} onNextClick={onNextClick} />
     }
     else if (currentScreenIdx === 3) {
-      return <div>Result</div>
+      return <Result onNextClick={onNextClick} />
     } else {
       return
     }

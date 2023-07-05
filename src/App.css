@@ -4,11 +4,25 @@
   --gray: #dfe0e5;
   --darkgray: #aeaeae;
   --red: #ff3b3f;
+  --lightred: rgba(255, 59, 63, 10%);
   --green: #44b77b;
+  --lightgreen: rgb(67, 182, 123, 15%);
+  --blue: #0000ff;
+  --lightblue: rgb(0, 0, 255, 10%);
 }
 
 .App {
   text-align: center;
   overflow: hidden;
   height: 100vh;
+  max-width: 400px;
+}
+
+@media(min-width:400px) {
+  body {
+    background: linear-gradient(0deg, rgba(178,160,243,1) 0%, rgba(178,160,243,1) 25%, rgba(255,255,255,1) 100%);
+  }
+  .App{
+    margin: auto;
+  }
 }

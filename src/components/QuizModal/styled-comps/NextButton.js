@@ -29,7 +29,7 @@ export const NextButton = styled.button`
         transform: translateX(4px);
     }
     50% {
-        transform: translateX(-4px);
+        transform: translateX(-5px);
     }
     75% {
         transform: translateX(4px);

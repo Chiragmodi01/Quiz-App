@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {ArrowRight} from '@styled-icons/bootstrap/ArrowRight'
 
 import { NextButton, OptionTab, QuizCounter } from "./styled-comps";
+import confettiHeader from '../../assets/confettiHeader.svg'
 import './QuizModal.css';
 
 const QuizModal = ({ QuizData, onNextClick }) => {
@@ -36,7 +37,7 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 	return (
 		<div className="modal-wrapper">
 			<div className="modal-header">
-				<img src="/" alt="header-confetti" className="modal-header-image" />
+				<img src={confettiHeader} alt="header-confetti" className="modal-header-image" />
 			</div>
 			<main className="modal-main">
 				<section className="ques-count-wrapper">

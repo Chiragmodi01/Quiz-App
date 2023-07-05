@@ -1,0 +1,68 @@
+.modal-main {
+    background-color: #fff;
+    padding: 0 15px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    height: 100vh;
+    margin-top: -25px;
+}
+.main-wrapper {
+    height: 100vh;
+}
+.title {
+    font-size: 1.5rem;
+    margin: 0;
+    padding-top: 20px;
+}
+.result-indicator-wrapper {
+    margin: 20px 0;
+}
+.score-meter-bg {
+    width: 200px;
+}
+.result-info-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 12px;
+}
+.result-info-tab {
+    border-radius: 15px;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 0 14px;
+}
+.info-digit {
+    font-weight: bold;
+}
+.info-message {
+    color: lightslategrey;
+    font-weight: 500;
+}
+.info-indicator {
+    width: 14px;
+    height: 13px;
+    border-radius: 50%;
+}
+.result-info-tab.correct {
+    background-color: var(--lightgreen);
+}
+.result-info-tab.correct .info-indicator {
+    background-color: var(--green);
+}
+.result-info-tab.incorrect {
+    background-color: var(--lightred);
+}
+.result-info-tab.incorrect .info-indicator {
+    background-color: var(--red);
+}
+.result-info-tab.info {
+    background-color: var(--lightblue);
+}
+.result-info-tab.info .info-indicator {
+    background-color: var(--blue);
+}
