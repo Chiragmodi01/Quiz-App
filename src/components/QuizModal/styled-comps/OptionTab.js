@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const OptionTab = styled.div`
-	background-color: var(--lightgray);
-	padding: 4px 16px;
+	background-color: ${props => props.isSelected ? `#fff` : `var(--lightgray)`};
+	padding: 6px 16px;
 	gap: 14px;
 	border-radius: 8px;
 	display: flex;

@@ -1,0 +1,29 @@
+.Home-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background: linear-gradient(0deg, rgba(178,160,243,1) 0%, rgba(178,160,243,1) 25%, rgba(255,255,255,1) 100%);
+} 
+.brand-logo-image {
+    height: 30px;
+    margin: 20px;
+}
+.start-btn-wrapper {
+    margin: 0 15px;
+   align-self: stretch;
+}
+.app-info {
+    font-size: 2.5rem;
+    background-color: #fff;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 28%);
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: var(--red);
+    font-weight: bold;
+}

@@ -6,7 +6,7 @@ export const NextButton = styled.button`
     width: 100%;
     background-color: red;
     border-radius: 25px;
-    padding: 16px 28px;
+    padding: 14px 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,11 +14,25 @@ export const NextButton = styled.button`
     border: none;
     font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
     margin: 20px 0px;
+    cursor: pointer;
 
-    .btn-next {
+    .btn-text {
         flex: 1;
         margin: 0;
     }
+
+    animation: ${(props) => props && props.isInvalidSubmit ? `shake 300ms` : 'none'};
+
+    @keyframes shake {
+    25% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}
 `

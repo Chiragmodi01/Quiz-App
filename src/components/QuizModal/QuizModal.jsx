@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import {ArrowRight} from '@styled-icons/bootstrap/ArrowRight'
 
-import { NextButton, OptionTab, QuizCounter } from "../styled-comps";
+import { NextButton, OptionTab, QuizCounter } from "./styled-comps";
 import './QuizModal.css';
 
-const QuizModal = ({ QuizData }) => {
+const QuizModal = ({ QuizData, onNextClick }) => {
 	const {
 		quesNumber = 0,
 		totalQuesNumber = 0,
@@ -14,10 +14,24 @@ const QuizModal = ({ QuizData }) => {
 	} = QuizData || {};
 
 	const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+	const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
+	const [isInvalidSubmit, setIsInvalidSubmit] = useState(false);
 
 	const handleOptionTabClick = (idx) => {
 		setSelectedOptionIndex(idx);
+		setIsSubmitEnabled(true)
 	};
+
+	const nextClickHandler = () => {
+		setIsInvalidSubmit(true);
+		setTimeout(() => {
+			setIsInvalidSubmit(false)
+		}, 300)
+		if(isSubmitEnabled) {
+			onNextClick()
+			setIsSubmitEnabled(false)
+		}
+	}
 
 	return (
 		<div className="modal-wrapper">
@@ -27,10 +41,12 @@ const QuizModal = ({ QuizData }) => {
 			<main className="modal-main">
 				<section className="ques-count-wrapper">
 					<QuizCounter className="ques-count-container">
-						<span className="ques-count-border"></span>
-						<div className="ques-count">
-							<span className="curren-ques-count">{quesNumber}</span>
-							<span className="total-ques-count">/{totalQuesNumber}</span>
+						<div className="insideCounter">
+							<span className="ques-count-border"></span>
+							<div className="ques-count">
+								<span className="curren-ques-count">{quesNumber}</span>
+								<span className="total-ques-count">/{totalQuesNumber}</span>
+							</div>
 						</div>
 					</QuizCounter>
 				</section>
@@ -44,7 +60,7 @@ const QuizModal = ({ QuizData }) => {
 					<div className="quiz-options-wrapper">
 						{options.map((option, idx) => {
 							return (
-								<OptionTab isSelected={selectedOptionIndex === idx} onClick={() => handleOptionTabClick(idx)} key={idx} className="quiz-option-wrapper">
+								<OptionTab isSelected={selectedOptionIndex === idx ? true : false} onClick={(e) => handleOptionTabClick(idx)} key={idx} className="quiz-option-wrapper">
 									<div className="inputbox-container">
 										<input
 											type="checkbox"
@@ -52,7 +68,7 @@ const QuizModal = ({ QuizData }) => {
 											id={`option-${idx}`}
 											value={option}
 											className="quiz-option-input"
-											checked={selectedOptionIndex === idx}
+											checked={selectedOptionIndex === idx ? true : false}
 											onChange={() => {}}
 										/>
 									     <label htmlFor={`option-${idx}`}></label>
@@ -66,8 +82,8 @@ const QuizModal = ({ QuizData }) => {
 					</div>
 				</section>
 				<section className="btn-next-wrapper">
-					<NextButton>
-						<p className="btn-next">Next</p>
+					<NextButton onClick={nextClickHandler} isInvalidSubmit={isInvalidSubmit}>
+						<p className="btn-text">Next</p>
 						<span className="icon-arrow">
 							<ArrowRight size='20' />
 						</span>
