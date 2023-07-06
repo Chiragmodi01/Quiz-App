@@ -48,7 +48,7 @@ function Result({ totalQuestions, userSubmissions, onNextClick }) {
 								<GaugeChart
 									hideText={true}
 									needleColor="black"
-									marginInPercent="0.07"
+									marginInPercent="0.08"
 									nrOfLevels="30"
 									percent={finalPercentage / 100}
 									arcPadding="0"
