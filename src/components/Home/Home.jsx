@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import { NextButton } from "../QuizModal/styled-comps";
+import { NextButton } from "../styled-comps";
 import brandlogo from "../../assets/brandlogo.svg";
 
 function Home({ serverError, isLoading, onNextClick }) {

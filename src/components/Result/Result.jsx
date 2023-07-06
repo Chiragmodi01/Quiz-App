@@ -3,7 +3,7 @@ import "./Result.css";
 import GaugeChart from "react-responsive-gauge-chart";
 import { calculateScore } from "../../utils/calculateScore";
 
-import { NextButton } from "../QuizModal/styled-comps";
+import { NextButton } from "../styled-comps";
 import confettiHeader from "../../assets/confettiHeader.svg";
 import meterBg from "../../assets/meterBg.svg";
 

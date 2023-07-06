@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ArrowRight } from "@styled-icons/bootstrap/ArrowRight";
 
-import { NextButton, OptionTab, QuizCounter } from "./styled-comps";
+import { NextButton, OptionTab, QuizCounter } from "../styled-comps";
 import confettiHeader from "../../assets/confettiHeader.svg";
 import "./QuizModal.css";
 
@@ -18,10 +18,10 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 	const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
 	const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 	const [isInvalidSubmit, setIsInvalidSubmit] = useState(false);
-	const [userAnswer, setUserAnswer] = useState('');
+	const [userAnswer, setUserAnswer] = useState("");
 
 	const handleOptionTabClick = (idx) => {
-		setUserAnswer(options[idx])
+		setUserAnswer(options[idx]);
 		setSelectedOptionIndex(idx);
 		setIsSubmitEnabled(true);
 	};
@@ -38,6 +38,26 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 		}
 	};
 
+	const CounterSvg = () => {
+		return (
+			<svg viewBox="0 0 36 36" class="circular-chart orange">
+				<path
+					class="circle-bg"
+					d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
+				/>
+				<path
+					class="circle"
+					stroke-dasharray={`${quesNumber/totalQuesNumber * 100}, 100`}
+					d="M18 2.0845
+							a 15.9155 15.9155 0 0 1 0 31.831
+							a 15.9155 15.9155 0 0 1 0 -31.831"
+				/>
+			</svg>
+		);
+	};
+
 	return (
 		<div className="modal-wrapper">
 			<div className="modal-header">
@@ -49,9 +69,12 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 			</div>
 			<main className="modal-main">
 				<section className="ques-count-wrapper">
-					<QuizCounter className="ques-count-container">
-						<div className="insideCounter">
-							<span className="ques-count-border"></span>
+					<QuizCounter
+						quesNumber={quesNumber}
+						className="flex-wrapper ques-count-container"
+					>
+						<div class="single-chart">
+							<CounterSvg />
 							<div className="ques-count">
 								<span className="curren-ques-count">{quesNumber}</span>
 								<span className="total-ques-count">/{totalQuesNumber}</span>
@@ -98,7 +121,9 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 						onClick={nextClickHandler}
 						isInvalidSubmit={isInvalidSubmit}
 					>
-						<p className="btn-text">{totalQuesNumber === quesNumber ? 'Submit' : 'Next'}</p>
+						<p className="btn-text">
+							{totalQuesNumber === quesNumber ? "Submit" : "Next"}
+						</p>
 						<span className="icon-arrow">
 							<ArrowRight size="20" />
 						</span>
