@@ -1,5 +1,9 @@
 ## Quiz App (Marvel theme)
-Tech Stack: <pre>JavaScript, ReactJs, styled-component</pre>
+Tech Stack:
+```
+Frontend: JavaScript, ReactJs, styled-component
+Backend: NodeJs, Express
+```
 Screens : 
 ```
 1. Home
