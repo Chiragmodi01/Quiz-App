@@ -1,15 +1,24 @@
 import React, { useCallback } from "react";
 import "./Result.css";
 import GaugeChart from "react-responsive-gauge-chart";
-import {calculateScore} from '../../utils/calculateScore';
+import { calculateScore } from "../../utils/calculateScore";
 
 import { NextButton } from "../QuizModal/styled-comps";
 import confettiHeader from "../../assets/confettiHeader.svg";
 import meterBg from "../../assets/meterBg.svg";
 
 function Result({ onNextClick }) {
-    const meterBorderColors = ["#ff3e3e", "#ff5f3c", "#ff9638", "#fdb635", "#fdc933", "#c8c949", "#8ec15f", "#44b77b"];
-    const scorePercent = calculateScore()
+	const meterBorderColors = [
+		"#ff3e3e",
+		"#ff5f3c",
+		"#ff9638",
+		"#fdb635",
+		"#fdc933",
+		"#c8c949",
+		"#8ec15f",
+		"#44b77b",
+	];
+	const scorePercent = calculateScore();
 
 	return (
 		<div className="Result-wrapper">
@@ -33,10 +42,22 @@ function Result({ onNextClick }) {
 								/>
 								<div className="meter-outer-circle">
 									<div className="meter-inner-circle">
-                                        <span className="meter-percentage">{scorePercent}%</span>
-                                    </div>
+										<span className="meter-percentage">{scorePercent}%</span>
+									</div>
 								</div>
-								<GaugeChart hideText={true} needleColor='black' marginInPercent='0.08' nrOfLevels='30' percent={scorePercent/100} arcPadding='0' cornerRadius='0' arcWidth='0.1' colors={meterBorderColors} className="meter-chart" id="gauge-chart1" />
+								<GaugeChart
+									hideText={true}
+									needleColor="black"
+									marginInPercent="0.07"
+									nrOfLevels="30"
+									percent={scorePercent / 100}
+									arcPadding="0"
+									cornerRadius="0"
+									arcWidth="0.1"
+									colors={meterBorderColors}
+									className="meter-chart"
+									id="gauge-chart1"
+								/>
 							</div>
 						</div>
 						<div className="result-info-tabs">

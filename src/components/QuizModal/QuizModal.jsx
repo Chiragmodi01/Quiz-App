@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {ArrowRight} from '@styled-icons/bootstrap/ArrowRight'
+import { ArrowRight } from "@styled-icons/bootstrap/ArrowRight";
 
 import { NextButton, OptionTab, QuizCounter } from "./styled-comps";
-import confettiHeader from '../../assets/confettiHeader.svg'
-import './QuizModal.css';
+import confettiHeader from "../../assets/confettiHeader.svg";
+import "./QuizModal.css";
 
 const QuizModal = ({ QuizData, onNextClick }) => {
 	const {
@@ -20,24 +20,28 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 
 	const handleOptionTabClick = (idx) => {
 		setSelectedOptionIndex(idx);
-		setIsSubmitEnabled(true)
+		setIsSubmitEnabled(true);
 	};
 
 	const nextClickHandler = () => {
 		setIsInvalidSubmit(true);
 		setTimeout(() => {
-			setIsInvalidSubmit(false)
-		}, 300)
-		if(isSubmitEnabled) {
-			onNextClick()
-			setIsSubmitEnabled(false)
+			setIsInvalidSubmit(false);
+		}, 300);
+		if (isSubmitEnabled) {
+			onNextClick();
+			setIsSubmitEnabled(false);
 		}
-	}
+	};
 
 	return (
 		<div className="modal-wrapper">
 			<div className="modal-header">
-				<img src={confettiHeader} alt="header-confetti" className="modal-header-image" />
+				<img
+					src={confettiHeader}
+					alt="header-confetti"
+					className="modal-header-image"
+				/>
 			</div>
 			<main className="modal-main">
 				<section className="ques-count-wrapper">
@@ -61,7 +65,12 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 					<div className="quiz-options-wrapper">
 						{options.map((option, idx) => {
 							return (
-								<OptionTab isSelected={selectedOptionIndex === idx ? true : false} onClick={(e) => handleOptionTabClick(idx)} key={idx} className="quiz-option-wrapper">
+								<OptionTab
+									isSelected={selectedOptionIndex === idx ? true : false}
+									onClick={(e) => handleOptionTabClick(idx)}
+									key={idx}
+									className="quiz-option-wrapper"
+								>
 									<div className="inputbox-container">
 										<input
 											type="checkbox"
@@ -72,21 +81,22 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 											checked={selectedOptionIndex === idx ? true : false}
 											onChange={() => {}}
 										/>
-									     <label htmlFor={`option-${idx}`}></label>
+										<label htmlFor={`option-${idx}`}></label>
 									</div>
-									<p className="option-text">
-										{option}
-									</p>
+									<p className="option-text">{option}</p>
 								</OptionTab>
 							);
 						})}
 					</div>
 				</section>
 				<section className="btn-next-wrapper">
-					<NextButton onClick={nextClickHandler} isInvalidSubmit={isInvalidSubmit}>
+					<NextButton
+						onClick={nextClickHandler}
+						isInvalidSubmit={isInvalidSubmit}
+					>
 						<p className="btn-text">Next</p>
 						<span className="icon-arrow">
-							<ArrowRight size='20' />
+							<ArrowRight size="20" />
 						</span>
 					</NextButton>
 				</section>

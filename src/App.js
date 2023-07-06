@@ -1,35 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 
 import QuizModal from './components/QuizModal/QuizModal'
-import QuizData from './data/sample.json'
 import Home from './components/Home/Home';
 import Result from './components/Result/Result';
+import {useFetchData} from './utils/useFetchData.jsx'
 
 const App = () => {
   const [quesIndex, setQuesIndex] = useState(0);
   const [currentScreenIdx, setCurrentScreenIdx] = useState(1);
+  const [timeConsumedInSeconds, setTimeConsumedInSeconds] = useState(0);
+  const API_URL = 'https://62a14523-2209-44c0-be13-3649b6840ef5.mock.pstmn.io/getQuizData'
 
+  const { isLoading, quizData, serverError, fetchData } = useFetchData(API_URL, setCurrentScreenIdx);
+
+  //? screen 1: home, screen 2: live quiz, screen 3:result report
+  //logic to change screen, call fetch func, and start countdown
   const onNextClick = () => {
-    if(currentScreenIdx === 1) {
-      setCurrentScreenIdx(2)
+    let intervalId;
+    let counterValue = 0;
+    if(currentScreenIdx !== 3) {
+      intervalId = setInterval(() => {
+        counterValue++
+        // console.log(counterValue);
+      }, 800)
     }
-    if(currentScreenIdx === 2) {
-      if(quesIndex === QuizData.length-1) {
-        setCurrentScreenIdx(3)
-      }
-      setQuesIndex(prev => prev+1);   
+
+    if(currentScreenIdx === 1) {
+      setQuesIndex(0)
+      !isLoading && fetchData()
     }
     if(currentScreenIdx === 3) {
       setCurrentScreenIdx(1)
+    }
+    if(currentScreenIdx === 2) {
+      if(quesIndex === quizData.length-1) {
+        setCurrentScreenIdx(3)
+        alert(counterValue)
+        if(intervalId) {
+          setTimeConsumedInSeconds(counterValue)
+          clearInterval(intervalId)
+          intervalId=null
+        }
+      }
+      setQuesIndex(prev => prev+1);
+
     }
   }
 
   const CurrentScreen = () => {
     if(currentScreenIdx === 1) {
-      return <Home onNextClick={onNextClick} />
+      return <Home onNextClick={onNextClick} isLoading={isLoading} serverError={serverError} />
     } else if (currentScreenIdx === 2) {
-      return  <QuizModal QuizData={QuizData[quesIndex]} onNextClick={onNextClick} />
+      return  <QuizModal QuizData={quizData[quesIndex]} onNextClick={onNextClick} />
     }
     else if (currentScreenIdx === 3) {
       return <Result onNextClick={onNextClick} />

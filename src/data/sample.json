@@ -1,26 +1,23 @@
 [
 	{
-        "id": "22",
 		"quesNumber": 1,
-		"totalQuesNumber": 5,
+		"totalQuesNumber": 3,
 		"question": "How are you doing?",
 		"image": "https://i.pravatar.cc/150/200",
 		"answer": "option2",
 		"options": ["option1", "option2", "option3", "option4", "option5"]
 	},
 	{
-        "id": "23",
 		"quesNumber": 2,
-		"totalQuesNumber": 5,
+		"totalQuesNumber": 3,
 		"question": "What are you doing?",
 		"image": "https://i.pravatar.cc/150/200",
 		"answer": "option3",
 		"options": ["option1", "option2", "option3", "option4", "option5"]
 	},
 	{
-        "id": "24",
 		"quesNumber": 3,
-		"totalQuesNumber": 5,
+		"totalQuesNumber": 3,
 		"question": "Why are you doing?",
 		"image": "https://i.pravatar.cc/150/200",
 		"answer": "option3",

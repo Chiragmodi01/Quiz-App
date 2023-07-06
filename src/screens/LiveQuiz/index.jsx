@@ -15,12 +15,6 @@ const LiveQuiz = () => {
   return (
     <div>
       <QuizModal onNextClick={onNextClick} QuizData={QuizData[quesIndex]} />
-      {/* {
-        QuizData.map((quiz)=> {
-          return (
-          )
-        })
-      } */}
     </div>
   )
 }
