@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 export const NextButton = styled.button`
     color: #FFFF;
+    font-family: 'Nunito', sans-serif;
     width: 100%;
     background-color: red;
     border-radius: 25px;

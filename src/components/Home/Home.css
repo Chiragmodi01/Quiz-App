@@ -31,8 +31,8 @@
     border: 3px solid #fff;
     border-radius: 50%;
     border-top: 4px solid transparent;
-    width: 13px;
-    height: 12px;
+    width: 15px;
+    height: 14px;
     animation: spin 0.5s linear infinite;
   }
   

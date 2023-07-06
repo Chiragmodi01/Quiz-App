@@ -36,11 +36,11 @@ export const QuizCounter = styled.div`
 
     .curren-ques-count {
         font-size: 2.2rem;
-        font-weight: bold;
+        font-weight: 600;
     }
     .total-ques-count {
         font-size: 1rem;
-        font-weight: bold;
+        font-weight: 600;
         color: var(--darkgray);
     }
 `
