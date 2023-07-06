@@ -99,9 +99,7 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 						)}
 					</div>
 					<div
-						className={`quiz-options-wrapper ${
-							!!image ? "height-min" : "height-max"
-						}`}
+						className="quiz-options-wrapper"
 					>
 						{options.map((option, idx) => {
 							return (

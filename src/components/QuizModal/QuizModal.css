@@ -2,13 +2,18 @@
     height: 20vh;
     background-color: var(--primary);
 }
+.quiz-main-wrapper {
+    flex-direction: column;
+    height: calc(100% - (75px + 75px));
+    display: flex;
+}
 .modal-main {
     padding: 0 15px;
     position: relative;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     margin-top: -25px;
-    height: 100vh;
+    height: calc(80vh + 25px);
 }
 .btn-next-wrapper {
     position: fixed;
@@ -31,6 +36,7 @@
 }
 .quiz-options-wrapper {
     overflow-y: auto;
+    flex-grow: 1;
 }
 .skeleton {
     width: 100%;
@@ -50,13 +56,6 @@
       background-position: 450px 0;
     }
   }
-
-.quiz-options-wrapper.height-max {
-    height: 100%;
-}
-.quiz-options-wrapper.height-min {
-    max-height: 210px;
-}
 .modal-header-image {
     width: 100%;
     height: auto;
