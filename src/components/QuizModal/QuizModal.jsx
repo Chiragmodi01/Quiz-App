@@ -11,14 +11,17 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 		totalQuesNumber = 0,
 		question = "",
 		image = "",
+		answer,
 		options = [],
 	} = QuizData || {};
 
 	const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
 	const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 	const [isInvalidSubmit, setIsInvalidSubmit] = useState(false);
+	const [userAnswer, setUserAnswer] = useState('');
 
 	const handleOptionTabClick = (idx) => {
+		setUserAnswer(options[idx])
 		setSelectedOptionIndex(idx);
 		setIsSubmitEnabled(true);
 	};
@@ -29,7 +32,8 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 			setIsInvalidSubmit(false);
 		}, 300);
 		if (isSubmitEnabled) {
-			onNextClick();
+			const isCorrect = userAnswer === answer;
+			onNextClick(userAnswer, isCorrect);
 			setIsSubmitEnabled(false);
 		}
 	};
@@ -94,7 +98,7 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 						onClick={nextClickHandler}
 						isInvalidSubmit={isInvalidSubmit}
 					>
-						<p className="btn-text">Next</p>
+						<p className="btn-text">{totalQuesNumber === quesNumber ? 'Submit' : 'Next'}</p>
 						<span className="icon-arrow">
 							<ArrowRight size="20" />
 						</span>
