@@ -19,6 +19,7 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 	const [isSubmitEnabled, setIsSubmitEnabled] = useState(false);
 	const [isInvalidSubmit, setIsInvalidSubmit] = useState(false);
 	const [userAnswer, setUserAnswer] = useState("");
+	const [showImgSkeleton, setShowImgSkeleton] = useState(true);
 
 	const handleOptionTabClick = (idx) => {
 		setUserAnswer(options[idx]);
@@ -49,7 +50,7 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 				/>
 				<path
 					class="circle"
-					stroke-dasharray={`${quesNumber/totalQuesNumber * 100}, 100`}
+					stroke-dasharray={`${(quesNumber / totalQuesNumber) * 100}, 100`}
 					d="M18 2.0845
 							a 15.9155 15.9155 0 0 1 0 31.831
 							a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -85,11 +86,23 @@ const QuizModal = ({ QuizData, onNextClick }) => {
 				<section className="quiz-main-wrapper">
 					<div className="ques-container">
 						<h2 className="question-text">{question}</h2>
-						<div className="ques-image-container">
-							<img src={image} alt="question-img" className="ques-image" />
-						</div>
+						{image && (
+							<div className="ques-image-container">
+								{showImgSkeleton && <div className="skeleton"></div>}
+								<img
+									onLoad={() => setShowImgSkeleton(false)}
+									src={image}
+									alt="question-img"
+									className="ques-image"
+								/>
+							</div>
+						)}
 					</div>
-					<div className="quiz-options-wrapper">
+					<div
+						className={`quiz-options-wrapper ${
+							!!image ? "height-min" : "height-max"
+						}`}
+					>
 						{options.map((option, idx) => {
 							return (
 								<OptionTab
