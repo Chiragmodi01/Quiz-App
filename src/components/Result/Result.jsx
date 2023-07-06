@@ -18,7 +18,7 @@ function Result({ totalQuestions, userSubmissions, onNextClick }) {
 		"#8ec15f",
 		"#44b77b",
 	];
-	const {finalPercentage, correctAnswers, incorrectAnswers} = calculateScore(userSubmissions, totalQuestions);
+	const {finalPercentage, correctAnswers, incorrectAnswers, timeTakenInSeconds} = calculateScore(userSubmissions, totalQuestions);
 
 	return (
 		<div className="Result-wrapper">
@@ -73,7 +73,7 @@ function Result({ totalQuestions, userSubmissions, onNextClick }) {
 							</div>
 							<div className="result-info-tab info">
 								<span className="info-indicator"></span>
-								<p className="info-digit">04s</p>
+								<p className="info-digit">{timeTakenInSeconds}</p>
 								<p className="info-message">Time Consumed</p>
 							</div>
 						</div>
