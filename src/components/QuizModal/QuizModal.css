@@ -31,7 +31,7 @@
 }
 .quiz-options-wrapper {
     overflow-y: auto;
-    max-height: 170px;
+    max-height: 210px;
 }
 .modal-header-image {
     width: 100%;

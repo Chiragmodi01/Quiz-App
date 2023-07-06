@@ -21,7 +21,7 @@ const App = () => {
 	const [userSubmissions, setUserSubmissions] = useState(initialUIserSubmissions);
 
 	const API_URL =
-		"https://62a14523-2209-44c0-be13-3649b6840ef5.mock.pstmn.io/getQuizData";
+		"https://quizapp-backend-chirag.onrender.com/getQuizData";
 
 	const { isLoading, quizData, serverError, fetchData } = useFetchData(
 		API_URL,
