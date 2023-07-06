@@ -43,7 +43,7 @@
 }
 .ques-image {
     height: 130px;
-    width: 130px;
+    width: auto;
     object-fit: cover;
 }
 
